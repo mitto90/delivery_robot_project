@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="world_name" value="$(find my_robot_urdf)/worlds/myworld.world"/>
+    </include>
+     
+	<param name="robot_description" command="cat '$(find my_robot_urdf)/urdf/m2wr_tw.urdf'" />
+	
+	<node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model m2wr" />
+          
+</launch>
