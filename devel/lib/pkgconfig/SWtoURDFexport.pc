@@ -1,0 +1,8 @@
+prefix=/home/mitto90/delivery_robot_project/devel
+
+Name: SWtoURDFexport
+Description: Description of SWtoURDFexport
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
