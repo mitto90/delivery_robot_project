@@ -1,22 +1,5 @@
 <?xml version="1.0"?>
 <robot>
-
-  <!--gazebo reference="left_wheel_hinge">
-      <mu1 value="10000.0" />
-      <mu2 value="10000.0" />
-      <kp value="100000.0" />
-      <kd value="0.00001" />
-      <maxVel value="1.0" />
-      <minDepth value="0.0001" />
-  </gazebo>    
-  <gazebo reference="right_wheel_hinge">
-      <mu1 value="10000.0" />
-      <mu2 value="10000.0" />
-      <kp value="100000.0" />
-      <kd value="0.00001" />
-      <maxVel value="1.0" />
-      <minDepth value="0.0001" />
-  </gazebo-->  
   
   <gazebo reference="link_chassis">
     <material>Gazebo/Blue</material>
@@ -33,24 +16,33 @@
     <gazebo reference="link_back_left_wheel">
     <material>Gazebo/Black</material>
     </gazebo>
-
+	
+	<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>m2wr</robotNamespace>
+      <controlPeriod>0.001</controlPeriod>
+      <legacyModeNS>false</legacyModeNS>
+    </plugin>
+  </gazebo>
+  
  <!-- differencial drive controller, suscribe to cmd_vel and move the robot in the gazebo world -->
   <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <legacyMode>false</legacyMode>
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>joint_left_wheel</leftJoint>
-      <rightJoint>joint_right_wheel</rightJoint>
-      <wheelSeparation>0.55</wheelSeparation>
+    <plugin filename="libgazebo_ros_skid_steer_drive.so" name="skid_steer_drive_controller">
+      <updateRate>100.0</updateRate>
+      <robotNamespace>m2wr</robotNamespace>
+      <leftFrontJoint>joint_left_wheel</leftFrontJoint>
+      <rightFrontJoint>joint_right_wheel</rightFrontJoint>
+      <leftRearJoint>joint_back_left_wheel</leftRearJoint>
+      <rightRearJoint>joint_back_right_wheel</rightRearJoint>
+      <wheelSeparation>0.3</wheelSeparation>
       <wheelDiameter>0.2</wheelDiameter>
-      <torque>10</torque>
-      <publishWheelTF>true</publishWheelTF>
-      <publishWheelJointState>true</publishWheelJointState>
-      <commandTopic>cmd_vel</commandTopic>
+      <robotBaseFrame>link_chassis</robotBaseFrame>
+      <MaxForce>5.0</MaxForce>
+      <torque>20</torque>
+      <commandTopic>/cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>link_chassis</robotBaseFrame>
+      <broadcastTF>1</broadcastTF>
     </plugin>
   </gazebo>
 
@@ -73,7 +65,7 @@
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>mybot/camera1</cameraName>
+        <cameraName>kernel/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>camera</frameName>
@@ -109,7 +101,7 @@
 			</range>
 		</ray>
 		<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-		  <topicName>/scan</topicName>
+		  <topicName>kernel/scan</topicName>
 		  <frameName>laser_link</frameName>
 		</plugin>
 	</sensor>
@@ -124,7 +116,7 @@
       <visualize>true</visualize>
       <topic>__default_topic__</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-        <topicName>imu</topicName>
+        <topicName>kernel/imu</topicName>
         <bodyName>imu_link</bodyName>
         <updateRateHZ>10.0</updateRateHZ>
         <gaussianNoise>0.0</gaussianNoise>

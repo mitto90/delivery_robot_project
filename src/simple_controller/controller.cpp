@@ -26,11 +26,11 @@ bool forward = true;
     geometry_msgs::Twist msg;
     //Random x value between -2 and 2
 	
-  msg.linear.x= 0.5;
+  msg.linear.x= 1.0;
   
   
     //Random y value between -3 and 3
-    
+    msg.angular.z= 3.0;
 	
     //Publish the message
     pub.publish(msg);

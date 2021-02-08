@@ -35,6 +35,14 @@
 /home/mitto90/delivery_robot_project/build/gtest/googlemock/gtest/CMakeFiles/list_install_components.dir
 /home/mitto90/delivery_robot_project/build/gtest/googlemock/gtest/CMakeFiles/gtest.dir
 /home/mitto90/delivery_robot_project/build/gtest/googlemock/gtest/CMakeFiles/rebuild_cache.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/install/strip.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/install/local.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/test.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/list_install_components.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/edit_cache.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/_catkin_empty_exported_target.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/rebuild_cache.dir
+/home/mitto90/delivery_robot_project/build/navigation/CMakeFiles/install.dir
 /home/mitto90/delivery_robot_project/build/simple_controller/CMakeFiles/install/local.dir
 /home/mitto90/delivery_robot_project/build/simple_controller/CMakeFiles/rebuild_cache.dir
 /home/mitto90/delivery_robot_project/build/simple_controller/CMakeFiles/test.dir
